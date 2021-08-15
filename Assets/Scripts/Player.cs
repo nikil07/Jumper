@@ -18,6 +18,11 @@ public class Player : MonoBehaviour
     
 
     bool isAlive = true;
+    bool isMoving = false;
+
+    PlayerState playerState = PlayerState.IDLE;
+
+    private enum PlayerState {RUN, JUMP, IDLE};
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,7 @@ public class Player : MonoBehaviour
         feetCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         gravityScaleAtStart = myRigidBody.gravityScale;
+        
     }
 
     // Update is called once per frame
@@ -36,9 +42,10 @@ public class Player : MonoBehaviour
           //  return;
         run();
         flipSprite();
-        jump();
+        //jump();
         //climb();
         //die();
+        animator.SetFloat("JumpSpeedMultiplier", Time.deltaTime);
     }
 
     private void die()
@@ -77,20 +84,14 @@ public class Player : MonoBehaviour
         }*/
     }
 
-    private void jump()
+    public void jump()
     {
         if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
-
-            //if (CrossPlatformInputManager.GetButtonDown("Jump"))
-            if (Input.touchCount > 0) { 
-                Touch touch = Input.GetTouch(0);
-            if(touch.phase == TouchPhase.Ended)
-            {
-                myRigidBody.velocity += new Vector2(0, jumpSpeed);
-                    animator.SetTrigger("Jump");
-            }
-            }
+                    myRigidBody.velocity += new Vector2(0, jumpSpeed);
+        }
+        else {
+            playerState = PlayerState.JUMP;
         }
     }
 
@@ -104,14 +105,16 @@ public class Player : MonoBehaviour
     private void flipSprite()
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
-        if (playerHasHorizontalSpeed)
+        if (playerState != PlayerState.JUMP && playerHasHorizontalSpeed)
         {
+            playerState = PlayerState.RUN;
             animator.SetBool("Run", true);
             transform.localRotation = Quaternion.Euler(0, Mathf.Sign(myRigidBody.velocity.x) * 60, 0);
         }
         else
         {
             animator.SetBool("Run", false);
+            playerState = PlayerState.IDLE;
         }
     }
 
