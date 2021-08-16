@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2507472571470312447, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -191,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2507472571470312447, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -247,6 +255,10 @@ PrefabInstance:
     - target: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
       propertyPath: m_Name
       value: Platform (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2507472571470312447, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
       propertyPath: m_RootOrder
@@ -565,6 +577,10 @@ PrefabInstance:
     - target: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
       propertyPath: m_Name
       value: Platform (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2507472571470312447, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
       propertyPath: m_RootOrder
@@ -928,6 +944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
+  platformSpawnHeight: 5
 --- !u!4 &825198768
 Transform:
   m_ObjectHideFlags: 0
@@ -1079,6 +1096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2507472571470312447, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1190,7 +1211,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03648877, y: 0.8683832}
+  m_Offset: {x: 0.03648877, y: 0.63}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1201,7 +1222,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 1.7936516, y: 1.5742441}
+  m_Size: {x: 1.7936516, y: 1.2}
   m_EdgeRadius: 0
 --- !u!114 &1107024679
 MonoBehaviour:
@@ -2130,6 +2151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2507472571470312447, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2493,6 +2518,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform_Small
       objectReference: {fileID: 0}
+    - target: {fileID: 3095770038755566626, guid: 817926446bc74044bb00f1ccc5249e08, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3095770038755566638, guid: 817926446bc74044bb00f1ccc5249e08, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2554,6 +2583,10 @@ PrefabInstance:
     - target: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
       propertyPath: m_Name
       value: Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507472571470312435, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2507472571470312447, guid: d898c27d54bcd104bb36b83c675bd116, type: 3}
       propertyPath: m_RootOrder
