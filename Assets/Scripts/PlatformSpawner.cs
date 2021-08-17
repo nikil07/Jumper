@@ -22,10 +22,10 @@ public class PlatformSpawner : MonoBehaviour
     void Update()
     {
         elapsedTime = Time.fixedTime;
-        if (elapsedTime % 2 == 0) {
-            print("Spawn a platform");
+        //if (elapsedTime % 2 == 0)
+        {
             spawnPoint = new Vector3(getRandomX(), getRandomY((int)previousSpawnPoint.y),1);
-            print(spawnPoint);
+            //print(spawnPoint);
             GameObject platform = Instantiate(platformPrefab, spawnPoint, Quaternion.identity,transform);
             previousSpawnPoint = platform.transform.position;
         }

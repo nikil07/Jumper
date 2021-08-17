@@ -1,25 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
+    public static event Action increaseDifficulty;
 
+    [Header("Player Movement")]
     [SerializeField] float movementSpeed = 2f;
+    [SerializeField] int speedMultiplier = 5;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
+    [Header("Progression params")]
+    [SerializeField] int movementSpeedAdder = 20;
+    [SerializeField] float playerProgressDepth;
+    [SerializeField] float playerProgressMultiplier;
+    [SerializeField] float linearDragReductionFactor = 0.4f;
+    [Header("Gameobject References")]
     [SerializeField] Joystick joystick;
+
+
     Animator animator;
-
     Rigidbody2D myRigidBody;
-    CapsuleCollider2D myBodyCollider;
     BoxCollider2D feetCollider;
-    float gravityScaleAtStart;
+    float rigidBodyLinearDrag = 1f;
     
-
-    bool isAlive = true;
-    bool isMoving = false;
-
     PlayerState playerState = PlayerState.IDLE;
 
     private enum PlayerState {RUN, JUMP, IDLE};
@@ -28,31 +34,55 @@ public class Player : MonoBehaviour
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
-        myBodyCollider = GetComponent<CapsuleCollider2D>();
         feetCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
-        gravityScaleAtStart = myRigidBody.gravityScale;
-        
+        rigidBodyLinearDrag = myRigidBody.drag;
+        StartCoroutine(startFalling());
+    }
+
+    IEnumerator startFalling() {
+        yield return new WaitForSeconds(3);
+        Destroy(GameObject.Find("Floor"));
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (!isAlive)
-          //  return;
         run();
         flipSprite();
-        //jump();
-        //climb();
-        //die();
-        animator.SetFloat("JumpSpeedMultiplier", Time.deltaTime);
+        checkPlayerProgress();
+    }
+
+    private void checkPlayerProgress() {
+        if (transform.position.y <= playerProgressDepth) {
+            playerProgressDepth *= playerProgressMultiplier;
+            playerProgressMultiplier *= 2;
+            updateDifficulty();
+        }
+    }
+
+    private void updateDifficulty() {
+        increaseDifficulty?.Invoke();
+        rigidBodyLinearDrag -= linearDragReductionFactor;
+        myRigidBody.drag = rigidBodyLinearDrag;
+        linearDragReductionFactor /= 2;
+
+        movementSpeed += movementSpeedAdder;
+        movementSpeedAdder /= 2;
+
+        printAllValues();
+    }
+
+    private void printAllValues() {
+        print( "Game elapsed time " + Time.fixedTime  +", playerProgressDepth " + playerProgressDepth + ", playerProgressMultiplier " + playerProgressMultiplier + ", rigidBodyLinearDrag " + rigidBodyLinearDrag
+            + ", linearDragReductionFactor " + linearDragReductionFactor + ", movementSpeed " + movementSpeedAdder + ", movementSpeedAdder " + movementSpeedAdder);
+
     }
 
     private void die()
     {
-        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
+        if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
         {
-            isAlive = false;
             animator.SetBool("isAlive", false);
             GetComponent<Rigidbody2D>().velocity = new Vector2(20f, 20f);
         }
@@ -99,7 +129,6 @@ public class Player : MonoBehaviour
     {
         Vector3 direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
         myRigidBody.velocity = new Vector2(joystick.Horizontal * movementSpeed, myRigidBody.velocity.y);
-
     }
 
     private void flipSprite()
@@ -120,6 +149,5 @@ public class Player : MonoBehaviour
 
     public void disableControls()
     {
-        isAlive = false;
     }
 }
