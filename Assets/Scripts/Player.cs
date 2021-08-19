@@ -6,6 +6,7 @@ using System;
 public class Player : MonoBehaviour
 {
     public static event Action increaseDifficulty;
+    public static event Action playerHitPlatform;
 
     [Header("Player Movement")]
     [SerializeField] float movementSpeed = 2f;
@@ -129,6 +130,13 @@ public class Player : MonoBehaviour
     {
         Vector3 direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
         myRigidBody.velocity = new Vector2(joystick.Horizontal * movementSpeed, myRigidBody.velocity.y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Platform") {
+            playerHitPlatform?.Invoke();
+        }
     }
 
     private void flipSprite()
