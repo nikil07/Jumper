@@ -9,6 +9,8 @@ public class GameState : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreText;
     [SerializeField] GameObject gameOverPopup;
+    [SerializeField] TMP_Text depthFallenText;
+    [SerializeField] TMP_Text timePlayedText;
 
     public static event Action increaseDifficulty;
     public static event Action gameOver;
@@ -45,7 +47,8 @@ public class GameState : MonoBehaviour
     }
 
     private void updateScoreText() {
-        points = -(int)player.transform.position.y;
+        //points = -(int)player.transform.position.y;
+        points = totalPlatformsPassed;
         scoreText.SetText(points + "");
     }
 
@@ -54,10 +57,29 @@ public class GameState : MonoBehaviour
         Debug.Log("GameState : Player hit platform " + platformHits + " times");
         if (platformHits == 3)
         {
-            gameOverPopup.SetActive(true);
-            gameOver?.Invoke();
-            Time.timeScale = 0;
+            showGameOver();
         }
+    }
+
+    private void showGameOver() {
+        gameOverPopup.SetActive(true);
+        depthFallenText.SetText("You fell "+ getDepthFallen() + " meters");
+        timePlayedText.SetText(getTimeElapsed() + " seconds"); // needs better handling
+        gameOver?.Invoke();
+        Time.timeScale = 0;
+    }
+
+    private int getTimeElapsed() {
+        int timeElapsed = 0;
+        timeElapsed = (int)Time.timeSinceLevelLoad;
+        return timeElapsed;
+    }
+
+    private int getDepthFallen() {
+        int depth = -(int)player.transform.position.y;
+        return depth;
+
+
     }
 
     private void incrementPlatformsPassed() {
