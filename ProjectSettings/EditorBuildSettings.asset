@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/GameScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/HomeScene.unity
+    guid: 202cf0c4a5b3aae468179ddee225052f
   - enabled: 1
     path: Assets/Scenes/GameSceneDownfall.unity
     guid: d56aeb3e213e88a4b98ea8cdb109dc2d

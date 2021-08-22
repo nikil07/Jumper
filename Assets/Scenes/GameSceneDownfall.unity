@@ -733,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2291949712373900317, guid: 3069c64df0d0848ae96cb2b00d0deb60, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -16.099976
+      value: -16.100098
       objectReference: {fileID: 0}
     - target: {fileID: 2291949712373900317, guid: 3069c64df0d0848ae96cb2b00d0deb60, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -849,7 +849,7 @@ RectTransform:
   m_Children:
   - {fileID: 1272105288}
   m_Father: {fileID: 1885704462}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1296,7 +1296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -31
+      value: -30.999878
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1360,6 +1360,7 @@ MonoBehaviour:
   climbSpeed: 5
   movementSpeedAdder: 10
   playerProgressDepth: -200
+  playerProgressRandomizer: 50
   playerProgressMultiplier: 1.5
   linearDragReductionFactor: 0.4
   joystick: {fileID: 1907959936}
@@ -1421,6 +1422,7 @@ GameObject:
   - component: {fileID: 1185173849}
   - component: {fileID: 1185173851}
   - component: {fileID: 1185173850}
+  - component: {fileID: 1185173852}
   m_Layer: 5
   m_Name: ThirdHeart
   m_TagString: Untagged
@@ -1485,6 +1487,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185173848}
   m_CullTransparentMesh: 1
+--- !u!95 &1185173852
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185173848}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 51c5bf6877e92c8499509e6d70faaf8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1272105287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,7 +1751,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368850725}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1738,7 +1759,7 @@ RectTransform:
   - {fileID: 463831505}
   - {fileID: 1185173849}
   m_Father: {fileID: 1885704462}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1926,11 +1947,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383998071}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -168.75, y: -300, z: 0}
-  m_LocalScale: {x: 0.234375, y: 0.234375, z: 0.234375}
+  m_LocalPosition: {x: 363.75, y: 886.6666, z: 0}
+  m_LocalScale: {x: 0.4947917, y: 0.4947917, z: 0.4947917}
   m_Children: []
-  m_Father: {fileID: 1885704462}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393415603
 GameObject:
@@ -2378,7 +2399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585586683}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 9.201483, y: -17.988018, z: 0.9773686}
+  m_LocalPosition: {x: 7.617302, y: -17.988018, z: 0.9773686}
   m_LocalScale: {x: 72.77887, y: 1.2125, z: 1}
   m_Children: []
   m_Father: {fileID: 128166935}
@@ -2558,7 +2579,6 @@ RectTransform:
   - {fileID: 275896424}
   - {fileID: 1907959935}
   - {fileID: 1676902726}
-  - {fileID: 1383998074}
   - {fileID: 1646149351112269286}
   - {fileID: 431524067}
   - {fileID: 1368850726}
@@ -2725,7 +2745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939384947}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -11.49951, y: -17.988018, z: 0.9773686}
+  m_LocalPosition: {x: -9.915328, y: -17.988018, z: 0.9773686}
   m_LocalScale: {x: 72.21903, y: 1.2125, z: 1}
   m_Children: []
   m_Father: {fileID: 128166935}
@@ -3648,7 +3668,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: Home
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2f49fe8c22d94f9a9e6cd06ad490155, type: 2}
   m_sharedMaterial: {fileID: 3074828514974314926, guid: c2f49fe8c22d94f9a9e6cd06ad490155, type: 2}
@@ -69955,7 +69975,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1646149351080988717}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2013970531}
+        m_TargetAssemblyTypeName: GameState, Assembly-CSharp
+        m_MethodName: goToHomeScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1646149351080988723
 GameObject:
   m_ObjectHideFlags: 0
@@ -69969,7 +70001,7 @@ GameObject:
   - component: {fileID: 1646149351080988717}
   - component: {fileID: 1646149351080988719}
   m_Layer: 5
-  m_Name: Button_Exit
+  m_Name: Button_Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70011,7 +70043,7 @@ RectTransform:
   - {fileID: 1646149351080988716}
   - {fileID: 1646149349100100648}
   m_Father: {fileID: 1885704462}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

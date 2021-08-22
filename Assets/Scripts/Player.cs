@@ -16,8 +16,10 @@ public class Player : MonoBehaviour
     [Header("Progression params")]
     [SerializeField] int movementSpeedAdder = 20;
     [SerializeField] float playerProgressDepth;
+    [SerializeField] float playerProgressRandomizer = 50;
     [SerializeField] float playerProgressMultiplier;
     [SerializeField] float linearDragReductionFactor = 0.4f;
+
     [Header("Gameobject References")]
     [SerializeField] Joystick joystick;
 
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour
     IEnumerator startFalling() {
         yield return new WaitForSeconds(3);
         Destroy(GameObject.Find("Floor"));
+        generatePlayerProgressDepth();
     }
 
     // Update is called once per frame
@@ -52,6 +55,10 @@ public class Player : MonoBehaviour
         run();
         flipSprite();
         checkPlayerProgress();
+    }
+
+    private void generatePlayerProgressDepth() {
+        playerProgressDepth = UnityEngine.Random.Range(playerProgressDepth - playerProgressRandomizer, playerProgressDepth);
     }
 
     private void checkPlayerProgress() {

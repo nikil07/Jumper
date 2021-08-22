@@ -69,7 +69,17 @@ public class GameState : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    public void goToHomeScreen() {
+        StartCoroutine(goToHomeScreen(0));
+    }
+
+    IEnumerator goToHomeScreen(int scene) {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(scene);
+    }
+
     private int getTimeElapsed() {
+        // Time shouldnt count when standing on platform
         int timeElapsed = 0;
         timeElapsed = (int)Time.timeSinceLevelLoad;
         return timeElapsed;
@@ -78,8 +88,6 @@ public class GameState : MonoBehaviour
     private int getDepthFallen() {
         int depth = -(int)player.transform.position.y;
         return depth;
-
-
     }
 
     private void incrementPlatformsPassed() {

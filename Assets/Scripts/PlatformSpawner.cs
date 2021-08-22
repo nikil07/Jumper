@@ -17,6 +17,7 @@ public class PlatformSpawner : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         previousSpawnPoint = new Vector3(getRandomX(), -12, 1);
+        Player.increaseDifficulty += updateDifficultyPrams;
     }
 
     // Update is called once per frame
@@ -30,6 +31,10 @@ public class PlatformSpawner : MonoBehaviour
             GameObject platform = Instantiate(platformPrefab, spawnPoint, Quaternion.identity,transform);
             previousSpawnPoint = platform.transform.position;
         }
+    }
+
+    private void updateDifficultyPrams() {
+        platformSpawnHeight--;
     }
 
     private float getRandomX() {
