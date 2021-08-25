@@ -143,6 +143,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Platform") {
             playerHitPlatform?.Invoke();
+            Destroy(collision.gameObject);
         }
     }
 

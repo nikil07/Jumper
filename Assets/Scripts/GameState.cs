@@ -9,6 +9,7 @@ public class GameState : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreText;
     [SerializeField] GameObject gameOverPopup;
+    [SerializeField] GameObject floatingJoyStick;
     [SerializeField] TMP_Text depthFallenText;
     [SerializeField] TMP_Text timePlayedText;
 
@@ -63,6 +64,7 @@ public class GameState : MonoBehaviour
 
     private void showGameOver() {
         gameOverPopup.SetActive(true);
+        floatingJoyStick.SetActive(false);
         depthFallenText.SetText("You fell "+ getDepthFallen() + " meters");
         timePlayedText.SetText(getTimeElapsed() + " seconds"); // needs better handling
         gameOver?.Invoke();
@@ -70,10 +72,11 @@ public class GameState : MonoBehaviour
     }
 
     public void goToHomeScreen() {
-        StartCoroutine(goToHomeScreen(0));
+        Time.timeScale = 1;
+        StartCoroutine(goToHomeScreenDelayed(0));
     }
 
-    IEnumerator goToHomeScreen(int scene) {
+    IEnumerator goToHomeScreenDelayed(int scene) {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(scene);
     }

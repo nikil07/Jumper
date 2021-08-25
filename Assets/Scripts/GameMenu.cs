@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
-    [SerializeField] GameObject mainCanvas;
+    [SerializeField] GameObject homeScreen;
     [SerializeField] GameObject statsScreen;
 
     // Start is called before the first frame update
@@ -21,17 +21,17 @@ public class GameMenu : MonoBehaviour
     }
 
     public void startGame() {
-        StartCoroutine(startGame(1));
+        StartCoroutine(startGameDelayed(1));
     }
 
-    IEnumerator startGame(int scene)
+    IEnumerator startGameDelayed(int scene)
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(scene);
     }
 
     public void showStatsScreen(bool isOpen) {
-        mainCanvas.SetActive(!isOpen);
+        homeScreen.SetActive(!isOpen);
         statsScreen.SetActive(isOpen);
     }
 }
