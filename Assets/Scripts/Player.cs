@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
     public static event Action increaseDifficulty;
     public static event Action playerHitPlatform;
 
+    
     [Header("Player Movement")]
     [SerializeField] float movementSpeed = 2f;
     [SerializeField] int speedMultiplier = 5;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
+    [SerializeField] float waitTimeBeforePlatformDrop = 1f;
     [Header("Progression params")]
     [SerializeField] int movementSpeedAdder = 20;
     [SerializeField] float playerProgressDepth;
@@ -142,9 +144,14 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Platform") {
-            playerHitPlatform?.Invoke();
-            Destroy(collision.gameObject);
+            StartCoroutine(handlePlatformHit(collision.gameObject));
         }
+    }
+
+    IEnumerator handlePlatformHit(GameObject platform) {
+        playerHitPlatform?.Invoke();
+        yield return new WaitForSeconds(waitTimeBeforePlatformDrop);
+        Destroy(platform);
     }
 
     private void flipSprite()

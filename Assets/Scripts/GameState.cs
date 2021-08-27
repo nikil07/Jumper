@@ -56,7 +56,7 @@ public class GameState : MonoBehaviour
     private void playerHitPlatform() {
         platformHits++;
         Debug.Log("GameState : Player hit platform " + platformHits + " times");
-        if (platformHits == 3)
+        if (platformHits == 1)
         {
             showGameOver();
         }
@@ -67,8 +67,17 @@ public class GameState : MonoBehaviour
         floatingJoyStick.SetActive(false);
         depthFallenText.SetText("You fell "+ getDepthFallen() + " meters");
         timePlayedText.SetText(getTimeElapsed() + " seconds"); // needs better handling
+        updateStatsData();
         gameOver?.Invoke();
         Time.timeScale = 0;
+    }
+
+    private void updateStatsData() {
+        PlayerPrefsStorage.setHighScore(getDepthFallen());
+        PlayerPrefsStorage.setLongestTime(getTimeElapsed());
+        PlayerPrefsStorage.setHighestPlatforms(totalPlatformsPassed);
+        PlayerPrefsStorage.setTotalPlatformsPassed(totalPlatformsPassed);
+        PlayerPrefsStorage.setTotalPlatformsHit(platformHits);
     }
 
     public void goToHomeScreen() {
