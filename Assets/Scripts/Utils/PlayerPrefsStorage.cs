@@ -26,12 +26,23 @@ public class PlayerPrefsStorage
 
     public static void setLongestTime(int longestTime)
     {
+        setTotalTime(longestTime);
         PlayerPrefs.SetInt(Constants.PLAYER_LONGEST_TIME_PLAYERPREF_KEY, longestTime > getLongestTime() ? longestTime : getLongestTime()); // Replace with longestTime if its > previous one
     }
 
     public static int getLongestTime()
     {
         return PlayerPrefs.GetInt(Constants.PLAYER_LONGEST_TIME_PLAYERPREF_KEY, 0);
+    }
+
+    public static void setTotalTime(int currentTime)
+    {
+        PlayerPrefs.SetInt(Constants.PLAYER_TOTAL_TIME_PLAYERPREF_KEY, currentTime + getTotalTime() ); // Replace with longestTime if its > previous one
+    }
+
+    public static int getTotalTime()
+    {
+        return PlayerPrefs.GetInt(Constants.PLAYER_TOTAL_TIME_PLAYERPREF_KEY, 0);
     }
 
     public static void setTotalPlatformsPassed(int totalPlatformsPassed)

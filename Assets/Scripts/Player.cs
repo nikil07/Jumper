@@ -160,12 +160,12 @@ public class Player : MonoBehaviour
         if (playerState != PlayerState.JUMP && playerHasHorizontalSpeed)
         {
             playerState = PlayerState.RUN;
-            animator.SetBool("Run", true);
+            //animator.SetBool("Run", true);
             transform.localRotation = Quaternion.Euler(0, Mathf.Sign(myRigidBody.velocity.x) * 60, 0);
         }
         else
         {
-            animator.SetBool("Run", false);
+            //animator.SetBool("Run", false);
             playerState = PlayerState.IDLE;
         }
     }

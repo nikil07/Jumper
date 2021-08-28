@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ??????
+  m_text: Total time
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2f49fe8c22d94f9a9e6cd06ad490155, type: 2}
   m_sharedMaterial: {fileID: 3074828514974314926, guid: c2f49fe8c22d94f9a9e6cd06ad490155, type: 2}
@@ -2033,7 +2033,7 @@ GameObject:
   - component: {fileID: 347525440}
   - component: {fileID: 347525439}
   m_Layer: 5
-  m_Name: List (5)
+  m_Name: Total Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2630,7 +2630,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ????
+  m_text: 120
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}
   m_sharedMaterial: {fileID: 7374927986402738804, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}
@@ -5682,6 +5682,7 @@ MonoBehaviour:
   highScoreText: {fileID: 1100521873}
   maxPlatformsText: {fileID: 747349390}
   longestTimeText: {fileID: 353835787}
+  totalTimeText: {fileID: 523688862}
   totalPlatformsPassedText: {fileID: 365671614243745882}
   totalPlatformsHitText: {fileID: 1949390084}
 --- !u!1 &951645386
