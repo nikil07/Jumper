@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
+    [SerializeField] private int totalLives = 1;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] GameObject gameOverPopup;
     [SerializeField] GameObject floatingJoyStick;
@@ -56,7 +57,7 @@ public class GameState : MonoBehaviour
     private void playerHitPlatform() {
         platformHits++;
         Debug.Log("GameState : Player hit platform " + platformHits + " times");
-        if (platformHits == 1)
+        if (platformHits == totalLives)
         {
             showGameOver();
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPrefsStorage
 {
-    public void resetAllData() {
+    public static void resetAllData() {
         PlayerPrefs.DeleteAll();
     }
 
@@ -64,5 +64,13 @@ public class PlayerPrefsStorage
     public static int getTotalPlatformsHit()
     {
         return PlayerPrefs.GetInt(Constants.PLAYER_TOTAL_PLATFORMS_HIT_PLAYERPREF_KEY, 0);
+    }
+
+    public static void setPlatformWaitTimer(int waitTimer) {
+        PlayerPrefs.SetInt(Constants.PLAYER_PLATFORM_HIT_TIMER_PLAYERPREF_KEY, waitTimer);
+    }
+
+    public static int getPlatformWaitTimer() {
+        return PlayerPrefs.GetInt(Constants.PLAYER_PLATFORM_HIT_TIMER_PLAYERPREF_KEY, 1);
     }
 }

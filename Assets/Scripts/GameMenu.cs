@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameMenu : MonoBehaviour
 {
     [SerializeField] GameObject homeScreen;
     [SerializeField] GameObject statsScreen;
+    [SerializeField] GameObject settingsScreen;
+
+    [SerializeField] TMP_Text platformWaitTimeSliderText;
+    [SerializeField] Slider platformWaitTimeSlider;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        platformWaitTimeSlider.value = PlayerPrefsStorage.getPlatformWaitTimer();
+        platformWaitTimeSliderText.SetText(platformWaitTimeSlider.value + " Seconds");
     }
 
     // Update is called once per frame
@@ -33,5 +40,20 @@ public class GameMenu : MonoBehaviour
     public void showStatsScreen(bool isOpen) {
         homeScreen.SetActive(!isOpen);
         statsScreen.SetActive(isOpen);
+    }
+
+    public void showSettingsScreen(bool isOpen)
+    {
+        homeScreen.SetActive(!isOpen);
+        settingsScreen.SetActive(isOpen);
+    }
+
+    public void resetData() {
+        PlayerPrefsStorage.resetAllData();
+    }
+
+    public void handlePlatformWaitTimeChanged(float waitTimer) {
+        platformWaitTimeSliderText.SetText(platformWaitTimeSlider.value + " Seconds");
+        PlayerPrefsStorage.setPlatformWaitTimer((int)waitTimer);
     }
 }

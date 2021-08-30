@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
 
     IEnumerator handlePlatformHit(GameObject platform) {
         playerHitPlatform?.Invoke();
-        yield return new WaitForSeconds(waitTimeBeforePlatformDrop);
+        yield return new WaitForSeconds(PlayerPrefsStorage.getPlatformWaitTimer());
         Destroy(platform);
     }
 
