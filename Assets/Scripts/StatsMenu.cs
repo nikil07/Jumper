@@ -29,7 +29,7 @@ public class StatsMenu : MonoBehaviour
         GameState.gameOver -= updateStatsScreen;
     }
 
-    private void updateStatsScreen() {
+    public void updateStatsScreen() {
         print("updating all texts");
         setHighScoreText();
         setHighestPlatformsText();

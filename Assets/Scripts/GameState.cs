@@ -29,18 +29,24 @@ public class GameState : MonoBehaviour
         points = (int)player.transform.position.y;
         Platform.platformPassed += incrementPlatformsPassed;
         Player.playerHitPlatform += playerHitPlatform;
+        Pickups.pickupTaken += handlePickups;
     }
 
     private void OnDestroy()
     {
         Platform.platformPassed -= incrementPlatformsPassed;
         Player.playerHitPlatform -= playerHitPlatform;
+        Pickups.pickupTaken -= handlePickups;
+    }
+
+    private void handlePickups(string pickup) { 
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateScoreText();
+        //updateScoreText();
     }
 
     public void restartGame() {
@@ -105,6 +111,7 @@ public class GameState : MonoBehaviour
 
     private void incrementPlatformsPassed() {
         totalPlatformsPassed++;
+        updateScoreText();
     }
 
     public int getTotalPlatformsPassed() {

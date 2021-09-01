@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using EasyMobile;
+using System;
 
 public class GameMenu : MonoBehaviour
 {
@@ -50,6 +52,8 @@ public class GameMenu : MonoBehaviour
 
     public void resetData() {
         PlayerPrefsStorage.resetAllData();
+        FindObjectOfType<StatsMenu>().updateStatsScreen();
+        NativeUI.ShowToast("Data cleared");
     }
 
     public void handlePlatformWaitTimeChanged(float waitTimer) {
