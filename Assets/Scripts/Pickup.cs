@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickups : MonoBehaviour
+public class Pickup : MonoBehaviour
 {
     public static event Action<string> pickupTaken;
 

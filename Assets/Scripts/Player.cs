@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
         movementSpeed += movementSpeedAdder;
         movementSpeedAdder /= 2;
 
-        printAllValues();
+        //printAllValues();
     }
 
     private void printAllValues() {
