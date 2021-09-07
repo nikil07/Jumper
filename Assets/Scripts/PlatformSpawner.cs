@@ -24,7 +24,7 @@ public class PlatformSpawner : MonoBehaviour
     void Update()
     {
         elapsedTime = Time.fixedTime;
-        //if (elapsedTime % 2 == 0)
+        //if (elapsedTime % 1 == 0)
         {
             spawnPoint = new Vector3(getRandomX(), getRandomY((int)previousSpawnPoint.y),1);
             //print(spawnPoint);

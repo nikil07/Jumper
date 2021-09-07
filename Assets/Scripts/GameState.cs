@@ -21,6 +21,7 @@ public class GameState : MonoBehaviour
     private int totalPlatformsPassed = 0;
     private int platformHits = 0;
     int points = 0;
+    private int pickupEffectScaleModifier;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +40,16 @@ public class GameState : MonoBehaviour
         Pickup.pickupTaken -= handlePickups;
     }
 
-    private void handlePickups(string pickup) { 
-        
+    private void handlePickups(object pickup) {
+        if (pickup.GetType() == typeof(HeartLifePickup))
+        {
+            pickupEffectScaleModifier = ((HeartLifePickup)pickup).getnumberOfExtraLives();
+            totalLives += pickupEffectScaleModifier;
+        }
+    }
+
+    public int getNumberOfLivesLeft() {
+        return totalLives;
     }
 
     // Update is called once per frame
