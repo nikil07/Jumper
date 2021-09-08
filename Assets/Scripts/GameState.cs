@@ -44,12 +44,13 @@ public class GameState : MonoBehaviour
         if (pickup.GetType() == typeof(HeartLifePickup))
         {
             pickupEffectScaleModifier = ((HeartLifePickup)pickup).getnumberOfExtraLives();
-            totalLives += pickupEffectScaleModifier;
+            //totalLives += pickupEffectScaleModifier;
+            platformHits -= pickupEffectScaleModifier;
         }
     }
 
     public int getNumberOfLivesLeft() {
-        return totalLives;
+        return totalLives - platformHits;
     }
 
     // Update is called once per frame

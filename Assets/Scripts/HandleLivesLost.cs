@@ -17,7 +17,7 @@ public class HandleLivesLost : MonoBehaviour
     {
         Player.playerHitPlatform += playerHitPlatform;
         Pickup.pickupTaken += handlePickups;
-        playerHitPlatform();
+        //playerHitPlatform();
     }
 
     private void OnDestroy()
