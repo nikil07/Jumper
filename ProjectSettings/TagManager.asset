@@ -8,6 +8,7 @@ TagManager:
   - OrangeCircle
   - GreenDiamond
   - HeartLife
+  - DoubleHeartLife
   layers:
   - Default
   - TransparentFX

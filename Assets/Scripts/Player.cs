@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     float rigidBodyLinearDrag = 1f;
     
     PlayerState playerState = PlayerState.IDLE;
+    private bool isPlatformHit = false;
 
     private enum PlayerState {RUN, JUMP, IDLE};
 
@@ -143,7 +144,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (isPlatformHit)
+            return;
         if (collision.gameObject.tag == "Platform") {
+            isPlatformHit = true;
             StartCoroutine(handlePlatformHit(collision.gameObject));
         }
     }
@@ -151,6 +155,7 @@ public class Player : MonoBehaviour
     IEnumerator handlePlatformHit(GameObject platform) {
         playerHitPlatform?.Invoke();
         yield return new WaitForSeconds(PlayerPrefsStorage.getPlatformWaitTimer());
+        isPlatformHit = false;
         Destroy(platform);
     }
 

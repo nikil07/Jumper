@@ -49,7 +49,18 @@ public class PickupsGenerator : MonoBehaviour
         if(canSpawnPickup())
         {
             GameObject prefab = (GameObject)randomizer.RandomObject();
-            
+
+            if (prefab.tag.Equals(Constants.PICKUP_DOUBLE_HEART_TAG) && gameState.getNumberOfLivesLeft() != 1)
+            {
+                //print(prefab.transform.name);
+                while (true)
+                {
+                    prefab = (GameObject)randomizer.RandomObject();
+                    if (!prefab.tag.Equals(Constants.PICKUP_DOUBLE_HEART_TAG))
+                        break;
+                }
+            }
+
             if (prefab.tag.Equals(Constants.PICKUP_HEART_TAG) && gameState.getNumberOfLivesLeft() == 3) {
                 while (true) {
                     prefab = (GameObject)randomizer.RandomObject();

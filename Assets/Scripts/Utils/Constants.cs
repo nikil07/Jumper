@@ -16,4 +16,5 @@ public class Constants
     public const string PICKUP_GREEN_DIAMOND_TAG = "GreenDiamond";
     public const string PICKUP_ORANGE_CIRCLE_TAG = "OrangeCircle";
     public const string PICKUP_HEART_TAG = "HeartLife";
+    public const string PICKUP_DOUBLE_HEART_TAG = "DoubleHeartLife";
 }

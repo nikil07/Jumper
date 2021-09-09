@@ -17,7 +17,6 @@ public class HandleLivesLost : MonoBehaviour
     {
         Player.playerHitPlatform += playerHitPlatform;
         Pickup.pickupTaken += handlePickups;
-        //playerHitPlatform();
     }
 
     private void OnDestroy()
@@ -31,8 +30,12 @@ public class HandleLivesLost : MonoBehaviour
         if (pickup.GetType() == typeof(HeartLifePickup))
         {
             pickupEffectScaleModifier = ((HeartLifePickup)pickup).getnumberOfExtraLives();
-            count -= pickupEffectScaleModifier;
-            addLives();
+            print("pickupEffectScaleModifier = " + pickupEffectScaleModifier);
+            for (int i = 1; i <=pickupEffectScaleModifier; i++) {
+                count -= 1;
+                addLives();
+            }
+            
         }
     }
 

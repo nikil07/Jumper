@@ -42,6 +42,12 @@ public class Pickup : MonoBehaviour
                 HeartLifePickup heartLifePickup = new HeartLifePickup((int)pickupEffectScaleModifier);
                 pickupTaken?.Invoke(heartLifePickup);
             }
+            else if (gameObject.tag.Equals(Constants.PICKUP_DOUBLE_HEART_TAG))
+            {
+                print("Player picked up " + gameObject.tag);
+                HeartLifePickup heartLifePickup = new HeartLifePickup((int)pickupEffectScaleModifier);
+                pickupTaken?.Invoke(heartLifePickup);
+            }
             Destroy(gameObject);
         }
     }
