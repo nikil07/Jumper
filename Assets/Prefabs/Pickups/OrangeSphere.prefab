@@ -123,6 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1f5ca13398c6846b85eec03e3831e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupEffectScaleModifier: 0
+  pickupEffectDuration: 5
 --- !u!95 &109976635
 Animator:
   serializedVersion: 3

@@ -28,11 +28,12 @@ public class Player : MonoBehaviour
 
     Animator animator;
     Rigidbody2D myRigidBody;
-    BoxCollider2D feetCollider;
+    BoxCollider2D playerCollider;
     float rigidBodyLinearDrag = 1f;
     
     PlayerState playerState = PlayerState.IDLE;
     private bool isPlatformHit = false;
+    private float pickupEffectDuration;
 
     private enum PlayerState {RUN, JUMP, IDLE};
 
@@ -40,13 +41,19 @@ public class Player : MonoBehaviour
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
-        feetCollider = GetComponent<BoxCollider2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        Pickup.pickupTaken += handlePickupsTaken;
         rigidBodyLinearDrag = myRigidBody.drag;
         StartCoroutine(startFalling());
     }
 
-    IEnumerator startFalling() {
+    private void OnDestroy()
+    {
+        Pickup.pickupTaken -= handlePickupsTaken;
+
+    }
+        IEnumerator startFalling() {
         yield return new WaitForSeconds(3);
         Destroy(GameObject.Find("Floor"));
         generatePlayerProgressDepth();
@@ -58,6 +65,20 @@ public class Player : MonoBehaviour
         run();
         flipSprite();
         checkPlayerProgress();
+    }
+
+    private void handlePickupsTaken(object pickup) {
+        if (pickup.GetType() == typeof(OrangeCirclePickup))
+        {
+            pickupEffectDuration = ((OrangeCirclePickup)pickup).getpickupEffectDuration();
+            StartCoroutine(applyPickupEffect());
+        }
+    }
+
+    IEnumerator applyPickupEffect() {
+        playerCollider.isTrigger = true;
+        yield return new WaitForSeconds(pickupEffectDuration);
+        playerCollider.isTrigger = false;
     }
 
     private void generatePlayerProgressDepth() {
@@ -92,7 +113,7 @@ public class Player : MonoBehaviour
 
     private void die()
     {
-        if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
+        if (playerCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
         {
             animator.SetBool("isAlive", false);
             GetComponent<Rigidbody2D>().velocity = new Vector2(20f, 20f);
@@ -127,7 +148,7 @@ public class Player : MonoBehaviour
 
     public void jump()
     {
-        if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
                     myRigidBody.velocity += new Vector2(0, jumpSpeed);
         }

@@ -48,6 +48,12 @@ public class Pickup : MonoBehaviour
                 HeartLifePickup heartLifePickup = new HeartLifePickup((int)pickupEffectScaleModifier);
                 pickupTaken?.Invoke(heartLifePickup);
             }
+            else if (gameObject.tag.Equals(Constants.PICKUP_ORANGE_CIRCLE_TAG))
+            {
+                print("Player picked up " + gameObject.tag);
+                OrangeCirclePickup orangeCirclePickup = new OrangeCirclePickup((int)pickupEffectDuration);
+                pickupTaken?.Invoke(orangeCirclePickup);
+            }
             Destroy(gameObject);
         }
     }
