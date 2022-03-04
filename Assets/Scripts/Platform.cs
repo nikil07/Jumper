@@ -28,15 +28,28 @@ public class Platform : MonoBehaviour
         {
             pickupEffectScaleModifier = ((GreenDiamondPickup)pickup).getpickupEffectScaleModifier();
             pickupEffectDuration = ((GreenDiamondPickup)pickup).getpickupEffectDuration();
-            StartCoroutine( applyPickupEffect());
+            StartCoroutine( applyPickupEffectGreen());
+        } else if (pickup.GetType() == typeof(OrangeCirclePickup))
+        {
+            pickupEffectDuration = ((OrangeCirclePickup)pickup).getpickupEffectDuration();
+            StartCoroutine(applyPickupEffectOrange());
         }
     }
 
-    IEnumerator applyPickupEffect()
+    IEnumerator applyPickupEffectGreen()
     {
         transform.localScale = new Vector3(transform.localScale.x * pickupEffectScaleModifier, transform.localScale.y, transform.localScale.z);
         yield return new WaitForSeconds(pickupEffectDuration);
         transform.localScale = new Vector3(transform.localScale.x / pickupEffectScaleModifier, transform.localScale.y, transform.localScale.z);
+    }
+
+    IEnumerator applyPickupEffectOrange()
+    {
+        Color color = GetComponent<MeshRenderer>().material.color;
+        color.a = 0.2f;
+        GetComponent<MeshRenderer>().material.color = color;
+        yield return new WaitForSeconds(pickupEffectDuration);
+        
     }
 
     // Update is called once per frame
